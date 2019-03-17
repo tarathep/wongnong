@@ -81,7 +81,7 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>WongNong Category page</h1>
+					<font><h1>WongNong Category page</h1></font>
 					
 				</div>
 			</div>

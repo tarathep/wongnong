@@ -29,7 +29,7 @@ while($objResult = mysql_fetch_array($objQuery)){
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>WongNong</title>
 	<!--
 			CSS
 			============================================= -->
@@ -161,12 +161,29 @@ while($objResult = mysql_fetch_array($objQuery)){
 					<div class="table-responsive">
 						<table class="table">
 							<tbody>
+							<tr>
+									<td style = "padding-left:100px">
+										<h4 >รูป</h4>
+										
+									</td>
+									<td>
+										<h4>ชื่ออาหาร</h4>
+									</td>
+									<td>
+										<h4>ราคา</h4>
+									</td>
+								</tr>
 							<?php 
 							$menuSQL ="Select * from menu  where  rid ='".$rid."'";
 							$menuQuery = mysql_query($menuSQL) or die(mysql_error());
 							while($menuResult = mysql_fetch_array($menuQuery)){
 							?>
+
 								<tr>
+									<td>
+										<img src="<?=$menuResult['img']?>" class="rounded-circle"  height = "100px" width=" 100px">
+										
+									</td>
 									<td>
 										<h5><?=$menuResult['name']?></h5>
 									</td>
@@ -216,22 +233,25 @@ while($objResult = mysql_fetch_array($objQuery)){
 							
 							<?php
 							$reviewSQL ="select * from review as r
-							inner JOIN user as u ON r.uid = u.uid where  rid ='".$rid."'";
+							inner JOIN user as u ON r.uid = u.uid where  rid ='".$rid."' ";
 							$reviewQuery = mysql_query($reviewSQL) or die(mysql_error());
 							while($reviewResult = mysql_fetch_array($reviewQuery)){
 								
 								?> <div class='review_item'>
 								<div class='media'>
 									<div class='d-flex'>
-										<img src='img/product/review-1.png' alt=''>
+										<img src='img/product/review-1.png' height = "100px" width=" 100px">
 									</div>
 									<div class='media-body'>
 										<h4><?=$reviewResult['user']?></h4>
+										<?php
+										for($i = 0;$i < $reviewResult['rating'];$i++){
+										?>
 										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
-										<i class='fa fa-star'></i>
+										
+										<?php 
+										}
+										?>
 									</div>
 								</div>
 								<p><?=$reviewResult['desp'];?></p>
