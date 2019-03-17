@@ -145,11 +145,7 @@ if(isset($_POST['submit'])){
 								<input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
 
-							<div class="col-md-12 form-group">
-								<!--input type="button" name="submit"  value="Log In" class="primary-btn"-->
-								<Button type="submit" name="submit" id="submit" value="submit" class="primary-btn" >Login</Button>
-								<a href="#">Forgot Password?</a>
-							</div>
+						
 						</form>
 					</div>
 				</div>
@@ -166,8 +162,8 @@ if(isset($_POST['submit'])){
 					<div class="single-footer-widget">
 						<h6>About Us</h6>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-							magna aliqua.
+						เว็ปรีวิวอาหารที่โหดที่สุดในประเทศไทย wongnai คือไรไม่รู้ต้อง วง WongNong
+
 						</p>
 					</div>
 				</div>

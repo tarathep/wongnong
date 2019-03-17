@@ -260,7 +260,7 @@ echo("<font  color='red'>ปิดอยู่</font></p>");
 		<div class="row justify-content-center">
 			<div class="col-lg-6 text-center">
 				<div class="section-title">
-					<h1>Recommend Food</h1>
+					<h1>Random Food</h1>
 
 				</div>
 			</div>
@@ -325,7 +325,7 @@ while($objResult = mysql_fetch_array($objQuery)){
 					<div class="single-footer-widget">
 						<h6>About Us</h6>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.
+						เว็ปรีวิวอาหารที่โหดที่สุดในประเทศไทย wongnai คือไรไม่รู้ต้อง วง WongNong
 						</p>
 					</div>
 				</div>
