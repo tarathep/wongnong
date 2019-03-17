@@ -1,0 +1,40 @@
+.image-cropper {
+    width: 250px;
+    height:250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+.cards{
+
+   
+    display: block;
+    padding-top: 20px;
+    padding-bottom:100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
+.cen{
+    padding-top: 15px;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.cenid{
+    font-size: 18px;
+    text-align: center;
+
+}
