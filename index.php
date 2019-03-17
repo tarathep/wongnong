@@ -154,7 +154,7 @@ while($objResult = mysql_fetch_array($objQuery)){
 			<!-- single product -->
 			<div class="col-lg-3 col-md-6">
 				<div class="single-product">
-					<a href="category.php">
+					<a href="single-product.php?rid=<?php echo($objResult['rid']); ?>">
 						<img class="img-fluid" src="<?php echo($objResult['res_img']); ?>" alt="" >
 					</a>
 				
