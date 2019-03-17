@@ -63,7 +63,7 @@
 								<a class="nav-link" href="index.php">Home</a>
 							</li>
 							<li class="nav-item ">
-								<a href="category.php" class="nav-link ">Shop</a>
+								<a href="category.php" class="nav-link ">Restaurant</a>
 
 							</li>
 

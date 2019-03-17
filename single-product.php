@@ -65,7 +65,7 @@ while($objResult = mysql_fetch_array($objQuery)){
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
 							<li class="nav-item active">
-								<a href="category.php" class="nav-link ">Shop</a>
+								<a href="category.php" class="nav-link ">Restaurant</a>
 							</li>
 							<li class="nav-item "><a class="nav-link" href="contact.php">Contact</a></li>
 							<li class="nav-item "><a class="nav-link" href="login.php">Login</a></li>
@@ -215,7 +215,8 @@ while($objResult = mysql_fetch_array($objQuery)){
 							<div class="review_list">
 							
 							<?php
-							$reviewSQL ="Select * from review  where  rid ='".$rid."'";
+							$reviewSQL ="select * from review as r
+							inner JOIN user as u ON r.uid = u.uid where  rid ='".$rid."'";
 							$reviewQuery = mysql_query($reviewSQL) or die(mysql_error());
 							while($reviewResult = mysql_fetch_array($reviewQuery)){
 								
@@ -225,7 +226,7 @@ while($objResult = mysql_fetch_array($objQuery)){
 										<img src='img/product/review-1.png' alt=''>
 									</div>
 									<div class='media-body'>
-										<h4>Blake Ruiz</h4>
+										<h4><?=$reviewResult['user']?></h4>
 										<i class='fa fa-star'></i>
 										<i class='fa fa-star'></i>
 										<i class='fa fa-star'></i>

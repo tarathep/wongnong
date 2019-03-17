@@ -41,7 +41,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>WongNong</title>
 
 	<!--
 		CSS
@@ -76,7 +76,7 @@
 					<ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
 						<li class="nav-item ">
-							<a href="category.php" class="nav-link ">Shop</a>
+							<a href="category.php" class="nav-link ">Restaurant</a>
 							
 						</li>
 					

@@ -58,7 +58,7 @@
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
 							<li class="nav-item active">
-								<a href="category.php" class="nav-link ">Shop</a>
+								<a href="category.php" class="nav-link ">Restaurant</a>
 								
 							</li>
 						
@@ -81,7 +81,7 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Shop Category page</h1>
+					<h1>WongNong Category page</h1>
 					
 				</div>
 			</div>
