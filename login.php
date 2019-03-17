@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
 		<nav class="navbar navbar-expand-lg navbar-light main_box">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<a class="navbar-brand logo_h" href="index.php"><img src="img/wongnai.png" alt="" height="100px"></a>
+				<a class="navbar-brand logo_h" href="index.php"><img src="img/wongnai2.png" alt="" height="50px"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
 					<ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
 						<li class="nav-item ">
-							<a href="category.php" class="nav-link ">Shop</a>
+							<a href="category.php" class="nav-link ">Restaurant</a>
 							
 						</li>
 					
@@ -126,10 +126,10 @@ if(isset($_POST['submit'])){
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="login_box_img">
-						<img class="img-fluid" src="img/login.jpg" alt="">
+						<img class="img-fluid" src="img/login1.jpg" >
+
 						<div class="hover">
-							<h4>New to our website?</h4>
-							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+							
 							<a class="primary-btn" href="registration.php">Create an Account</a>
 						</div>
 					</div>
@@ -147,7 +147,7 @@ if(isset($_POST['submit'])){
 
 							<div class="col-md-12 form-group">
 								<!--input type="button" name="submit"  value="Log In" class="primary-btn"-->
-								<Button type="submit" name="submit" id="submit" value="submit" class="primary-btn" >Register</Button>
+								<Button type="submit" name="submit" id="submit" value="submit" class="primary-btn" >Login</Button>
 								<a href="#">Forgot Password?</a>
 							</div>
 						</form>

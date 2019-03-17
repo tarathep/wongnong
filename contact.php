@@ -35,38 +35,38 @@
 
 	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.php"><img src="img/wongnai2.png" alt="" height="50px"></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
-							<li class="nav-item ">
-								<a href="category.php" class="nav-link ">Restaurant</a>
-								
-							</li>
+	<div class="main_menu">
+		<nav class="navbar navbar-expand-lg navbar-light main_box">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<a class="navbar-brand logo_h" href="index.php"><img src="img/wongnai2.png" alt="" height="50px"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+					<ul class="nav navbar-nav menu_nav ml-auto">
+						<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
+						<li class="nav-item ">
+							<a href="category.php" class="nav-link ">Restaurant</a>
+							
+						</li>
+					
 						
-							
-							<li class="nav-item active"><a class="nav-link" href="contact.php">Contact</a></li>
-							<li class="nav-item "><a class="nav-link" href="login.php">Login</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							
-						</ul>
-					</div>
+						<li class="nav-item active"><a class="nav-link" href="contact.php">Contact</a></li>
+						<li class="nav-item "><a class="nav-link" href="login.php">Login</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						
+					</ul>
 				</div>
-			</nav>
-		</div>
-		
+			</div>
+		</nav>
+	</div>
+
 	</header>
 	<!-- End Header Area -->
 
@@ -104,7 +104,7 @@
 				<p class="cen">
 				Tarathep Cheongchaiyaphum
 				</p>
-				<p class="cenid">Nickname : Bokie<br> id : 5812111-7<br><a href="">facebook</a></p>
+				<p class="cenid">Nickname : Bokie<br> id : 5812111-7<br><a href="https://www.facebook.com/bokie.tarathep">Facebook</a></p>
 			   </div>
 
 
@@ -114,8 +114,8 @@
 				<div class="image-cropper">
     				<img src="images/Veerapat.jpg" class="rounded" />
 				</div>
-				<p class="cen">veerapat boonyasing</p>
-				<p class="cenid">Nickname : Poom<br> id : 58121098-6<br><a href="">facebook</a></p>
+				<p class="cen">Veerapat boonyasing</p>
+				<p class="cenid">Nickname : Poom<br> id : 58121098-6<br><a href="https://www.facebook.com/paloom.Luvup">Facebook</a></p>
 			   </div>
 
 
@@ -126,7 +126,7 @@
    					 <img src="images/teeraphan.jpg" class="rounded" />
 				</div>
 				<p class="cen">Teeraphan Bunsoemsiri</p>
-				<p class="cenid">Nickname : Aon<br> id : 58121049-9<br><a href="">facebook</a></p>
+				<p class="cenid">Nickname : Aon<br> id : 58121049-9<br><a href="https://www.facebook.com/profile.php?id=100002376685976">Facebook</a></p>
 			   </div>
 
 			   
@@ -136,7 +136,7 @@
    					 <img src="images/weerachai.jpg" class="rounded" />
 				</div>
 				<p class="cen">Weerachai Vichienrat</p>
-				<p class="cenid">Nickname : Wee<br> id : 5812114-1<br><a href="">facebook</a></p>
+				<p class="cenid">Nickname : Wee<br> id : 5812114-1<br><a href="https://www.facebook.com/wee.vichienrat">Facebook</a></p>
 			   </div>
 			</div>
 		</div>

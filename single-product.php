@@ -8,8 +8,11 @@ while($objResult = mysql_fetch_array($objQuery)){
 	$name =  $objResult['name'];
 	$des = $objResult['desp'];
 	$cate = $objResult['cate'];
-
+	$o_time = $objResult['open_time'];
+	$o_close = $objResult['close_time'];
 }	
+session_start();
+$_SESSION['rid'] = $rid;
 ?>
 
 
@@ -102,13 +105,13 @@ while($objResult = mysql_fetch_array($objQuery)){
 				<div class="col-lg-6">
 					<div class="s_Product_carousel">
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+							<img class="img-fluid" src="img/category/c1.jpg" alt="">
 						</div>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+							<img class="img-fluid" src="img/category/c3.jpg" alt="">
 						</div>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+							<img class="img-fluid" src="img/category/c2.jpg" alt="">
 						</div>
 					</div>
 				</div>
@@ -117,10 +120,17 @@ while($objResult = mysql_fetch_array($objQuery)){
 						<h3><?= $name ?></h3>
 						
 						<ul class="list">
-							<li><a class="active"><span>Category</span><?=$cate?></li>
-							
+							<li><a class="active"><span>Category</span><?=$cate?></a></li>
+							<li><a ><span>Open Time : </span><?=$o_time?></a></li>
+							<li><a ><span>Closed Time : </span><?=$o_close?></a></li>
 						</ul>
 						<p><?=$des?></p>
+						<div class="product_count">
+							
+						</div>
+						<div class="card_area d-flex align-items-center">
+						
+						</div>
 					</div>
 				</div>
 			</div>
@@ -206,24 +216,21 @@ while($objResult = mysql_fetch_array($objQuery)){
 									$num = $num / $count;
 								?>
 										<h4><?= $num?></h4>
-										<h6>(03 Reviews)</h6>
+										
 									</div>
 									<?php ?>
 								</div>
 								<div class="col-6">
 									<div class="rating_list">
-										<h3>Based on 3 Reviews</h3>
+										
 										<ul class="list">
-											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li><a href="#"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+													 class="fa fa-star"></i><i class="fa fa-star"></i> </a></li>
+											<li><a href="#"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+													 class="fa fa-star"></i></i> </a></li>
+											<li><a href="#"> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></i> </a></li>
+											<li><a href="#"> <i class="fa fa-star"></i><i class="fa fa-star"></i></i> </a></li>
+											<li><a href="#"> <i class="fa fa-star"></i> </a></li>
 										</ul>
 									</div>
 								</div>
@@ -265,28 +272,28 @@ while($objResult = mysql_fetch_array($objQuery)){
 						</div>
 						<div class="col-lg-6">
 							<div class="review_box">
-								<h4>Add a Review</h4>
-								<p>Your Rating:</p>
-								<ul class="list">
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-								</ul>
-								<p>Outstanding</p>
-								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+							<h4>Add a Review</h4>
+								<form class="row contact_form" action="insert-review.php" method="post" id="contactForm" novalidate="novalidate">
 									<div class="col-md-12">
 										<div class="form-group">
 											<input type="text" class="form-control" id="name" name="name" placeholder="Your Full name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">
 										</div>
 									</div>
 									<div class="col-md-12">
-										<div class="form-group">
-											<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
-										</div>
+									
+									<p>Your Rating:</p>
+										<div class="form-group" align = "center">
+										<select  name = 'rating'>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									</select>
+									<br>
 									</div>
-									<div class="col-md-12">
+									</div>
+									<div class="col-md-12" style = "margin-top:10px">
 										<div class="form-group">
 											<textarea class="form-control" name="message" id="message" rows="1" placeholder="Review" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Review'"></textarea></textarea>
 										</div>
