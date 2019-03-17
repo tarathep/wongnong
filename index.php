@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id']) && isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['user'])) {
 	$userID = $_SESSION['id'];
 	$userName =  $_SESSION['user'];
 }else{
@@ -121,56 +121,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['id'])) {
 	</section>
 	<!-- End banner Area -->
 
-	<!-- start features Area -->
-	<section class="features-area section_gap">
-		<div class="container">
-			<div class="row features-inner">
-				<!-- single features -->
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-features">
-						<div class="f-icon">
-							<img src="img/features/f-icon1.png" alt="">
-						</div>
-						<h6>Free Delivery</h6>
-						<p>Free Shipping on all order</p>
-					</div>
-				</div>
-				<!-- single features -->
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-features">
-						<div class="f-icon">
-							<img src="img/features/f-icon2.png" alt="">
-						</div>
-						<h6>Return Policy</h6>
-						<p>Free Shipping on all order</p>
-					</div>
-				</div>
-				<!-- single features -->
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-features">
-						<div class="f-icon">
-							<img src="img/features/f-icon3.png" alt="">
-						</div>
-						<h6>24/7 Support</h6>
-						<p>Free Shipping on all order</p>
-					</div>
-				</div>
-				<!-- single features -->
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-features">
-						<div class="f-icon">
-							<img src="img/features/f-icon4.png" alt="">
-						</div>
-						<h6>Secure Payment</h6>
-						<p>Free Shipping on all order</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- end features Area -->
-
-
+	
 	
 
 
@@ -180,6 +131,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['id'])) {
 		<div class="row justify-content-center">
 			<div class="col-lg-6 text-center">
 				<div class="section-title">
+					<br>
+					<br>
+					<br>
 					<h1>Recommend Restaurant</h1>
 
 				</div>
@@ -188,7 +142,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['id'])) {
 		<div class="row">
 
 			<?php 
-				$strSQL = "SELECT name,open_time,close_time, FORMAT( sum(rating)/count(rating),0) as num , count(rating) as count FROM `review` join restaurant on restaurant.rid = review.rid group by name , open_time,close_time order by  num  DESC limit 4";
+				$strSQL = "SELECT restaurant.rid,res_img,name,open_time,close_time, FORMAT( sum(rating)/count(rating),0) as num , count(rating) as count FROM `review` join restaurant on restaurant.rid = review.rid group by restaurant.rid,res_img,name , open_time,close_time order by  num  DESC limit 4";
 $objQuery = mysql_query($strSQL) or die(mysql_error());
 $dateData=time();
 while($objResult = mysql_fetch_array($objQuery)){
@@ -201,7 +155,7 @@ while($objResult = mysql_fetch_array($objQuery)){
 			<div class="col-lg-3 col-md-6">
 				<div class="single-product">
 					<a href="category.php">
-						<img class="img-fluid" src="img/c2.jpg" alt="">
+						<img class="img-fluid" src="<?php echo($objResult['res_img']); ?>" alt="" >
 					</a>
 				
 		

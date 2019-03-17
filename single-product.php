@@ -10,12 +10,33 @@ while($objResult = mysql_fetch_array($objQuery)){
 	$cate = $objResult['cate'];
 	$o_time = $objResult['open_time'];
 	$o_close = $objResult['close_time'];
+	$pic = $objResult['res_img'];
 }	
+$pic2 = [];
+$strSQL2 ="SELECT img FROM `restaurant` as res join menu as m on res.rid = m.rid where res.rid =  '".$rid."' limit 3  ";
+$objQuery2 = mysql_query($strSQL2) or die(mysql_error());
+while($objResult2 = mysql_fetch_array($objQuery2)){
+	array_push($pic2,$objResult2['img']);
+
+}	
+
+
 session_start();
 $_SESSION['rid'] = $rid;
 ?>
 
+<?php
 
+if (isset($_SESSION['id']) && isset($_SESSION['user'])) {
+	$userID = $_SESSION['id'];
+	$userName =  $_SESSION['user'];
+}else{
+	$userID = '';
+	$userName = '';
+	
+}
+
+?>
 <html lang="zxx" class="no-js">
 
 <head>
@@ -52,6 +73,9 @@ $_SESSION['rid'] = $rid;
 
 	<!-- Start Header Area -->
 	<header class="header_area sticky-header">
+		<style>
+	
+		</style>
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
@@ -71,7 +95,15 @@ $_SESSION['rid'] = $rid;
 								<a href="category.php" class="nav-link ">Restaurant</a>
 							</li>
 							<li class="nav-item "><a class="nav-link" href="contact.php">Contact</a></li>
-							<li class="nav-item "><a class="nav-link" href="login.php">Login</a></li>
+							<?php 
+							if ($userID !='' && $userName !=''){
+								echo "<li class='nav-item'><a class='nav-link' href='logout.php'>$userName (Logout)";
+							
+							}else{
+								echo "<li class='nav-item'><a class='nav-link' href='login.php'>Login";
+							}
+							?>
+					</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							
@@ -99,20 +131,25 @@ $_SESSION['rid'] = $rid;
 	<!-- End Banner Area -->
 
 	<!--================Single Product Area =================-->
+
 	<div class="product_image_area">
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
 					<div class="s_Product_carousel">
+
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/c1.jpg" alt="">
+							<img class="img-fluid" src="<?php echo($pic) ?>" alt="">
 						</div>
+						<?php for($i = 0 ;$i < count($pic2);$i++)
+						
+						{
+							?>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/c3.jpg" alt="">
+							<img class="img-fluid" src="<?php echo($pic2[$i]) ?>" alt="">
 						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="img/category/c2.jpg" alt="">
-						</div>
+						<?php } ?>
+					
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
@@ -270,13 +307,15 @@ $_SESSION['rid'] = $rid;
 
 							</div>
 						</div>
+						<?php 
+							if (isset($_SESSION['id']) && isset($_SESSION['user'])) { ?>
 						<div class="col-lg-6">
 							<div class="review_box">
 							<h4>Add a Review</h4>
 								<form class="row contact_form" action="insert-review.php" method="post" id="contactForm" novalidate="novalidate">
 									<div class="col-md-12">
 										<div class="form-group">
-											<input type="text" class="form-control" id="name" name="name" placeholder="Your Full name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">
+											<input type="text" class="form-control" id="name" name="name" value='<?php echo($userName); ?>' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Full name'">
 										</div>
 									</div>
 									<div class="col-md-12">
@@ -304,6 +343,28 @@ $_SESSION['rid'] = $rid;
 								</form>
 							</div>
 						</div>
+					
+							<?php }
+							else{
+								?>
+
+								<div class="col-lg-6">
+							<div class="review_box">
+									<div class="col-md-12 " style="text-align:center;">
+										<button type="submit" value="submit" class="primary-btn" onclick="window.location.href='login.php'">Login</button>
+									</div>
+							</div>
+							</div>
+
+						<?php
+							}
+							
+							?>
+
+
+
+
+
 					</div>
 				</div>
 			</div>

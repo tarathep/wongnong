@@ -1,4 +1,16 @@
 <?php
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['user'])) {
+	$userID = $_SESSION['id'];
+	$userName =  $_SESSION['user'];
+}else{
+	$userID = '';
+	$userName = '';
+	
+}
+
+?>
+<?php
 if(isset($_POST['submit'])){
 	include("config.php");
 	$username = $_POST["username"];
@@ -102,7 +114,15 @@ if(isset($_POST['submit'])){
 					
 						
 						<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-						<li class="nav-item active"><a class="nav-link" href="login.php">Login</a></li>
+						<?php 
+							if ($userID !='' && $userName !=''){
+								echo "<li class='nav-item'><a class='nav-link' href='logout.php'>$userName (Logout)";
+							
+							}else{
+								echo "<li class='nav-item'><a class='nav-link' href='login.php'>Login";
+							}
+							?>
+					</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						

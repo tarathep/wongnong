@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
+<?php
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['user'])) {
+	$userID = $_SESSION['id'];
+	$userName =  $_SESSION['user'];
+}else{
+	$userID = '';
+	$userName = '';
+	
+}
 
+?>
 <head>
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -57,7 +68,15 @@
 					
 						
 						<li class="nav-item active"><a class="nav-link" href="contact.php">Contact</a></li>
-						<li class="nav-item "><a class="nav-link" href="login.php">Login</a></li>
+						<?php 
+							if ($userID !='' && $userName !=''){
+								echo "<li class='nav-item'><a class='nav-link' href='logout.php'>$userName (Logout)";
+							
+							}else{
+								echo "<li class='nav-item'><a class='nav-link' href='login.php'>Login";
+							}
+							?>
+					</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						

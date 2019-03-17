@@ -6,7 +6,19 @@
 		
 							
 							?>
-<?php ?>
+<?php
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['user'])) {
+	$userID = $_SESSION['id'];
+	$userName =  $_SESSION['user'];
+}else{
+	$userID = '';
+	$userName = '';
+	
+}
+
+?>
+
 <html lang="zxx" class="no-js">
 
 <head>
@@ -64,7 +76,15 @@
 						
 							
 							<li class="nav-item "><a class="nav-link" href="contact.php">Contact</a></li>
-							<li class="nav-item "><a class="nav-link" href="login.php">Login</a></li>
+							<?php 
+							if ($userID !='' && $userName !=''){
+								echo "<li class='nav-item'><a class='nav-link' href='logout.php'>$userName (Logout)";
+							
+							}else{
+								echo "<li class='nav-item'><a class='nav-link' href='login.php'>Login";
+							}
+							?>
+					</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							
@@ -102,9 +122,11 @@
 							$y = 0;
 							$name = [];
 							$rid = [];
+							$pic = [];
 						while($objResult = mysql_fetch_array($objQuery)){
 							array_push($name,$objResult['name']);
 							array_push($rid,$objResult['rid']);
+							array_push($pic,$objResult['res_img']);
 							$y++;
 							?>
 								<li class="main-nav-list child"><a><?= $objResult['name'] ?><span class="number"></span></a></li>
@@ -147,7 +169,7 @@
 							
 						<div class='col-lg-4 col-md-6'>
 							<div class='single-product'>
-								<a href = 'single-product.php?rid=<?=$rid[$i]?>'><img class='img-fluid' src='img/product/p1.jpg' alt=''></a>
+								<a href = 'single-product.php?rid=<?=$rid[$i]?>'><img class='img-fluid' src='<?=$pic[$i]?>' alt=''></a>
 								<div class='product-details'>
 									<h6 align = "center"><?= $name[$i]?></h6>
 									
