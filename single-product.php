@@ -86,7 +86,7 @@ while($objResult = mysql_fetch_array($objQuery)){
 	<section class="banner-area organic-breadcrumb">
 		<div class="container" >
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end" >
-				<div class="col-first" >
+				<div class="col-first" style="color: black;">
 					<h1>Product Details Page</h1>
 				
 				</div>
@@ -115,25 +115,12 @@ while($objResult = mysql_fetch_array($objQuery)){
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
 						<h3><?= $name ?></h3>
-						<h2>$149.99</h2>
+						
 						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span><?=$cate?></a></li>
-							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
+							<li><a class="active"><span>Category</span><?=$cate?></li>
+							
 						</ul>
 						<p><?=$des?></p>
-						<div class="product_count">
-							<label for="qty">Quantity:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-						</div>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">Add to Cart</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -205,10 +192,23 @@ while($objResult = mysql_fetch_array($objQuery)){
 							<div class="row total_rate">
 								<div class="col-6">
 									<div class="box_total">
+									
 										<h5>Overall</h5>
-										<h4>4.0</h4>
+										<?php $rateSQL ="select rating from review as r
+									inner JOIN user as u ON r.uid = u.uid where  rid ='".$rid."' ";
+									$rateQuery = mysql_query($rateSQL) or die(mysql_error());
+									$num = 0.0;
+									$count = 0;
+									while($rateResult = mysql_fetch_array($rateQuery)){
+										$num += $rateResult['rating'];
+										$count++;
+									}
+									$num = $num / $count;
+								?>
+										<h4><?= $num?></h4>
 										<h6>(03 Reviews)</h6>
 									</div>
+									<?php ?>
 								</div>
 								<div class="col-6">
 									<div class="rating_list">
