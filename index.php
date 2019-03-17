@@ -281,7 +281,9 @@ while($objResult = mysql_fetch_array($objQuery)){
 			<div class="col-lg-3 col-md-6">
 				<div class="single-product">
 					<a href="category.php">
-						<img class="img-fluid" src="img/c2.jpg" alt="">
+						<div class="crop">
+						<img class="img-fluid" src="<?php echo($objResult['img']); ?>" alt=""  >
+						</div>
 					</a>
 					<div class="product-details">
 						<h6 align="center">

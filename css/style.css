@@ -38,3 +38,16 @@
     text-align: center;
 
 }
+
+
+.crop {
+    width: 20px;
+    height:20px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 20px;
+    height: 20px;
+    margin: -75px 0 0 -100px;
+}
