@@ -1,4 +1,42 @@
+<?php
 
+if(isset($_POST['submit'])){
+	session_start();
+	include("config.php");
+
+	$username = mysql_escape_string($_POST["username"]);
+	$password = mysql_escape_string($_POST["password"]);
+
+	if($username ==''){
+		echo "<script>alert('Please Enter Username');</script>";
+	}else if($password == ''){
+		echo "<script>alert('Please Enter Password');</script>";
+	}else{
+		$password = md5($password);
+		$strSQL = "select * from user where user = '$username' and password = '$password' limit 1;";
+
+		$objQuery = mysql_query($strSQL) or die(mysql_error());
+		$check = mysql_num_rows($objQuery);
+	
+	
+		if($check==1){
+			$_SESSION['user'] = $username;
+			while($objResult = mysql_fetch_array($objQuery)){
+				$_SESSION['id'] = $objResult['uid'];
+			}
+			echo "<meta http-equiv='refresh' content='0;URL=index.php'>";
+		}else{
+			echo "<script>alert('Username or Password is Incorrect');</script>";
+			echo "<meta http-equiv='refresh' content='0;URL=login.php'>";
+		}
+	}
+	
+}
+
+?>
+
+
+<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
@@ -15,7 +53,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>WongNong</title>
+	<title>Karma Shop</title>
 
 	<!--
 		CSS
@@ -38,7 +76,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light main_box">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<a class="navbar-brand logo_h" href="index.php"><img src="img/wongnai2.png" alt="" height="50px"></a>
+				<a class="navbar-brand logo_h" href="index.php"><img src="img/wongnai.png" alt="" height="100px"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -50,7 +88,7 @@
 					<ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
 						<li class="nav-item ">
-							<a href="category.php" class="nav-link ">Restaurant</a>
+							<a href="category.php" class="nav-link ">Shop</a>
 							
 						</li>
 					
@@ -99,21 +137,17 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>Log in to enter</h3>
-						<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+						<form class="row login_form" action="login.php" method="post" id="loginForm" novalidate="novalidate">
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+								<input type="text" class="form-control" id="username" name="username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
+
 							<div class="col-md-12 form-group">
-								<div class="creat_account">
-									<input type="checkbox" id="f-option2" name="selector">
-									<label for="f-option2">Keep me logged in</label>
-								</div>
-							</div>
-							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="primary-btn">Log In</button>
+								<!--input type="button" name="submit"  value="Log In" class="primary-btn"-->
+								<Button type="submit" name="submit" id="submit" value="submit" class="primary-btn" >Register</Button>
 								<a href="#">Forgot Password?</a>
 							</div>
 						</form>
@@ -138,7 +172,6 @@
 					</div>
 				</div>
 			
-				
 				<div class="col-lg-2 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<h6>Follow Us</h6>

@@ -1,27 +1,47 @@
-<script type="text/javascript">
-    function alertinfo(){
-        var frm = document.getElementById('registerForm');
-        if(frm.username.value==''){
-            alert('Enter Username!');
-            frm.username.focus();
-            return false;
-         }
-		 else if(frm.password.value==''){
-            alert('Enter Password!');
-            frm.password.focus();
-            return false;
-         }
-		 else if(frm.password_again.value=='' || frm.password.value != frm.password_again.value){
-            alert('Enter Password Again!');
-            frm.password.focus();
-			document.getElementById('password').value = ''
-			document.getElementById('password_again').value = ''
-            return false;
-         }else{
-			frm.submit();
-		 }
-    }
-    </script>
+<?php
+if(isset($_POST['submit'])){
+	include("config.php");
+	$username = $_POST["username"];
+	$password = $_POST["password"];
+	$again = $_POST["password_again"];
+	
+	if($username == ''){
+		echo "<script>
+		alert('please enter your username');
+		</script>";
+		
+	}else if($password == ''){
+		echo "<script>alert('please enter your password');</script>";
+
+	}else if ($again != $password){
+		echo "<script>alert('password confirm is not match!');</script>";
+	}else{
+		$strSQL = "select * from user where user = '$username';";
+
+		$objQuery = mysql_query($strSQL) or die(mysql_error());
+		$check = mysql_num_rows($objQuery);
+
+		if ($check >0){
+			echo "<script>alert('Username Is duplicate!');</script>";
+		}else{
+			$password = md5($password);
+			$strSQL = "insert into user (user,password) values ('$username','$password')";
+			$objQuery = mysql_query($strSQL) or die(mysql_error());
+
+			if($objQuery){
+				echo "<script>alert('Registered!');</script>";
+				echo "<meta http-equiv='refresh' content='0;URL=login.php'>";
+			}else{
+				echo "<script>alert('Error please contact administrator');</script>";
+				echo "<meta http-equiv='refresh' content='0;URL=registration.php'>";
+			}
+		}
+
+	}
+		
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -41,7 +61,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>WongNong</title>
+	<title>Karma Shop</title>
 
 	<!--
 		CSS
@@ -64,7 +84,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light main_box">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<a class="navbar-brand logo_h" href="index.php"><img src="img/wongnai2.png" alt="" height="100px"></a>
+				<a class="navbar-brand logo_h" href="index.php"><img src="img/wongnai.png" alt="" height="100px"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -76,7 +96,7 @@
 					<ul class="nav navbar-nav menu_nav ml-auto">
 						<li class="nav-item "><a class="nav-link" href="index.php">Home</a></li>
 						<li class="nav-item ">
-							<a href="category.php" class="nav-link ">Restaurant</a>
+							<a href="category.php" class="nav-link ">Shop</a>
 							
 						</li>
 					
@@ -116,10 +136,10 @@
 				<div class="col-lg-12">
 					<div class="login_form_inner">
 						<h3>Create Accoucnt</h3>
-						<form class="row login_form" action="registration-p.php" method="post" id="registerForm" novalidate="novalidate">
+						<form class="row login_form" action="registration.php" method="post" id="registerForm" novalidate="novalidate">
                         
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+								<input type="text" class="form-control" id="username" name="username" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
@@ -130,8 +150,8 @@
                            
 							
 							<div class="col-md-12 form-group" style = "padding-top:50px;padding-bottom:100px">
-								<input type="button" onclick="alertinfo()" value="Register" class="primary-btn">
-								
+							<Button type="submit" name="submit" id="submit" value="submit" class="primary-btn" >Register</Button>
+									
 							</div>
 						</form>
 					</div>

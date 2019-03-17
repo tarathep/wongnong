@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (isset($_SESSION['id']) && isset($_SESSION['id'])) {
+	$userID = $_SESSION['id'];
+	$userName =  $_SESSION['user'];
+}else{
+	$userID = '';
+	$userName = '';
+	
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 <?php include("config.php")?>
@@ -71,9 +84,15 @@
 							<li class="nav-item">
 								<a class="nav-link" href="contact.php">Contact</a>
 							</li>
-							<li class="nav-item ">
-								<a class="nav-link" href="login.php">Login</a>
-							</li>
+							<?php 
+							if ($userID !='' && $userName !=''){
+								echo "<li class='nav-item'><a class='nav-link' href='logout.php'>$userName (Logout)";
+							
+							}else{
+								echo "<li class='nav-item'><a class='nav-link' href='login.php'>Login";
+							}
+							?>
+							</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 

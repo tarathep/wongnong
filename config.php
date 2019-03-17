@@ -4,7 +4,7 @@ $username = "root";
 $password = "";
 $db= "tni_restaurant";
 
-mysql_connect($host,$username,$password);
+$conn =  mysql_connect($host,$username,$password);
 mysql_select_db($db);
 mysql_query("SET NAMES UTF8");
 /*
