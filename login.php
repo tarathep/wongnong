@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['user'])) {
-	
+
 	$userID = $_SESSION['id'];
 	$userName =  $_SESSION['user'];
 }else{
@@ -14,7 +14,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user'])) {
 <?php
 
 if(isset($_POST['submit'])){
-	session_start();
+	
 	include("config.php");
 
 	$username = mysql_escape_string($_POST["username"]);
