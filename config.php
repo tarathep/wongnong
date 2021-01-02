@@ -1,5 +1,5 @@
 <?php
-$host = "171.100.32.28";
+$host = "localhost";
 $username = "root";
 $password = "";
 $db= "tni_restaurant";
